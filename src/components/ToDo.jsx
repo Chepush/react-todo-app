@@ -39,9 +39,13 @@ export const ToDo = () => {
     }
 
     const onRemoveAll = () => {
-        while(todos.length != 0) {
-            onRemove(0);
-        }
+        for (let i = 0; i < todos.length; i++){
+            if (todos[i].checked) {
+                todos.splice(i, 1);
+                i--;
+            }
+          }
+          setTodos([...todos]);
     }
     
     const onSubmit = (name, description) => {
